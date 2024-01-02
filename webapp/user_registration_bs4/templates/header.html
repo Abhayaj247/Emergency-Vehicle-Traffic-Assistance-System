@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white" id="mainNav" style=" background: lightblue url('https://i.pinimg.com/originals/85/61/87/856187ab52a7ffafc4b3092ab92ef43b.jpg')  ;">
+    <div class="container">
+        <a class="navbar-brand " href="/">Emergency Vechicle</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="/accounts/profile/">
+                        <img src="{{request.user.user_profile.image.url_60x60}}" style="height:40px;"
+                             alt="{{request.user.fullname}}" class="avatar rounded-circle">
+                        <span class="header-username">{{request.user.get_full_name}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8000/save_patient/"><b>UPDATE</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://localhost:8000/emergency_detection/"><b>Detect</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/accounts/logout/"><b>Logout</b></a>
+                </li>
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link " href="/accounts/login/"><b>Login |</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/accounts/signup/"><b>Signup</b></a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
